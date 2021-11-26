@@ -1,0 +1,39 @@
+{   "variables": {
+        "aws_access_key": "",
+        "aws_secret_key": ""
+    },
+    "builders": [
+        {
+            "type": "amazon-ebs",
+            "name": "rhel8_kashish",
+            "access_key": "{{user `aws_access_key`}}",
+            "secret_key": "{{user `aws_secret_key`}}",
+            "region": "{{user `region`}}",
+            "ami_name" : "{{user `aminame`}}",
+            "source_ami": "{{user `rhel8_raw`}}",
+            "instance_type": "t2.micro",
+            "security_group_id": "{{user `security_group_id`}}",
+            "ssh_username": "ec2-user",
+            "run_tags": {
+                "Name": "rhel8_kashish"
+            },
+            "tags": {
+                "Name": "rhel8_kashish"
+            }
+        }
+    ],
+    "provisioners": [
+    {
+        "type": "shell",
+        "inline":[
+            "echo Building ${PACKER_BUILD_NAME^^}"
+        ]
+    },{
+        "type": "shell",
+        "execute_command": "echo '' | sudo -S sh -c '{{ .Vars }} {{ .Path }}'",
+        "scripts": [
+            "scripts/update_packages",
+            "scripts/install_packages"
+        ]
+    }]
+}
