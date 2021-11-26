@@ -4,7 +4,7 @@ set -eu
 rhel8_raw="ami-06a0b4e3b7eb7a300"
 region="ap-south-1"
 aminame="rhel8_kashish"
-security_group_id="sg-09c420f6bbab64ce5"
+security_group_id="sg-05f534737fdfc9f7c"
 
 cat <<EOF > var.json
       {
