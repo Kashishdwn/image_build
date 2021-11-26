@@ -14,4 +14,5 @@ cat <<EOF > var.json
         "region": "${region}"
       }
 EOF
+echo "Starting"
 packer build -var-file var.json templates/rhel8.json
