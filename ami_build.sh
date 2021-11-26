@@ -6,6 +6,8 @@ region="ap-south-1"
 aminame="rhel8_kashish"
 security_group_id="sg-05f534737fdfc9f7c"
 
+sudo touch var.json
+sudo chmod 777 var.json
 cat <<EOF > var.json
       {
         "rhel8_raw": "${rhel8_raw}",
