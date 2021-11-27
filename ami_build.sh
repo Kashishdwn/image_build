@@ -6,8 +6,6 @@ region="ap-south-1"
 aminame="rhel8_kashish"
 security_group_id="sg-05f534737fdfc9f7c"
 
-sudo touch var.json
-sudo chmod 777 var.json
 cat <<EOF > var.json
       {
         "rhel8_raw": "${rhel8_raw}",
@@ -17,4 +15,4 @@ cat <<EOF > var.json
       }
 EOF
 echo "Starting"
-packer build -var-file var.json templates/rhel8.json
+packer build -var-file var.json -var-file keys.json templates/rhel8.json
