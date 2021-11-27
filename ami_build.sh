@@ -16,3 +16,4 @@ cat <<EOF > var.json
 EOF
 echo "Starting"
 packer build -var-file var.json -var-file keys.json templates/rhel8.json
+echo "End"
